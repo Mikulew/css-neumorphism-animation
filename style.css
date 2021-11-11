@@ -1,17 +1,22 @@
 :root {
   --yangColor: #d8c21e;
   --yinColor: #111111;
+  --backgroundColor: #242424;
+  --shadow: 2px 2px 2px rgba(0, 0, 0, .8),
+            -2px -2px 2px rgb(216, 194, 30, 1);
+  --shadowInset: inset 2px 2px 2px rgba(0, 0, 0, .8),
+                inset -2px -2px 2px rgb(216, 194, 30, 1);
   --transition: 0.4s;
   --borderRadius: 40px;
 }
 
 html {
   font-size: 2vmin;
-  font-family: 'Playfair Display', serif;
+  font-family: 'Poppins', sans-serif;
   box-sizing: border-box;
   width: 100%;
   height: 100%;
-  background: var(--yinColor);
+  background: var(--backgroundColor);
 }
 
 *, *::before, *::after {
@@ -32,6 +37,20 @@ html {
 
 .container {
   display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.title {
+  color: var(--backgroundColor);
+  font-size: 4em;
+  text-shadow: var(--shadow);
+  text-align: center;
+  margin-bottom: 10px;
+}
+
+.bar-wrapper {
+  display: flex;
   flex-direction: row;
 }
 
@@ -39,11 +58,11 @@ html {
   position: relative;
   width: 40px;
   height: 200px;
-  background: linear-gradient(to bottom, rgba(0, 0, 0, .05), var(--yangColor));
-  box-shadow: 15px 15px 20px rgba(216, 194, 30, .9),
-              -15px -15px 20px rgba(17, 17, 17),
+  background: linear-gradient(to bottom, rgba(0, 0, 0, .8), var(--yangColor));
+  box-shadow: 5px 5px 5px rgba(216, 194, 30, .9),
+              -5px -5px 5px rgba(17, 17, 17),
               inset -5px -5px 5px rgba(216, 194, 30, .5),
-              inset 5px 5px 5px rgba(0, 0, 0, .05);
+              inset 5px 5px 5px rgba(0, 0, 0, .8);
   border-radius: var(--borderRadius);
   margin: 20px;
   overflow: hidden;
@@ -56,10 +75,9 @@ html {
   left: 0;
   width: 40px;
   height: 40px;
-  background: var(--yinColor);
+  background: rgba(0, 0, 0, .05);
   border-radius: 50%;
-  /* box-shadow: inset -5px -5px 5px rgba(216, 194, 30, .5),
-              0 420px 0 400px var(--yangColor); */
+  z-index: 10;
 }
 
 .bar::before {
@@ -71,8 +89,7 @@ html {
   height: 100%;
   z-index: 10;
   border-radius: var(--borderRadius);
-  box-shadow: 15px 15px 20px rgba(17, 17, 17),
-              -15px -15px 20px rgba(216, 194, 30, .9),
+  box-shadow: 5px 5px 5px rgba(17, 17, 17),
               inset -5px -5px 5px rgba(0, 0, 0, .05),
               inset 5px 5px 5px rgba(216, 194, 30, .5);
   animation: animate 2.5s ease-in-out infinite;
